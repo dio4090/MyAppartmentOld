@@ -6,25 +6,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-public class Login extends AppCompatActivity implements View.OnClickListener {
+public class UserAreaActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ViewHolder mViewHolder = new ViewHolder();
+    ViewHolder mViewHolder = new ViewHolder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_user_area);
 
-        this.mViewHolder.tvRegisterLink = (TextView) findViewById(R.id.tvRegisterLink);
-        this.mViewHolder.etUsername = (EditText) findViewById(R.id.etUsermane);
-        this.mViewHolder.etPassword = (EditText) findViewById(R.id.etPassword);
-        this.mViewHolder.btLogin = (Button) findViewById(R.id.btLogin);
+        mViewHolder.etName = (EditText) findViewById(R.id.etName);
+        mViewHolder.etAge= (EditText) findViewById(R.id.etAge);
+        mViewHolder.etUsername = (EditText) findViewById(R.id.etUsername);
+        mViewHolder.btLogout = (Button) findViewById(R.id.btLogout);
 
-        this.mViewHolder.btLogin.setOnClickListener(this);
-        this.mViewHolder.tvRegisterLink.setOnClickListener(this);
-
+        this.mViewHolder.btLogout.setOnClickListener(this);
     }
 
     @Override
@@ -48,24 +45,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         super.onDestroy();
     }
 
-
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
-            case R.id.btLogin:
-                //All button logic
-                break;
-            case R.id.tvRegisterLink:
-                startActivity(new Intent(this, Register.class));
+            case R.id.btLogout:
+                startActivity(new Intent(UserAreaActivity.this, LoginActivity.class));
                 break;
         }
-
     }
 
     private static class ViewHolder {
-        TextView tvRegisterLink;
+        EditText etName;
+        EditText etAge;
         EditText etUsername;
-        EditText etPassword;
-        Button btLogin;
+        Button btLogout;
     }
 }

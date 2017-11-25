@@ -1,27 +1,30 @@
 package projects.dellectus.myappartment;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
-public class Register extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ViewHolder mViewHolder = new ViewHolder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_login);
 
-        mViewHolder.etName = (EditText) findViewById(R.id.etName);
-        mViewHolder.etAge= (EditText) findViewById(R.id.etAge);
-        mViewHolder.etUsername = (EditText) findViewById(R.id.etUsername);
-        mViewHolder.etPassword = (EditText) findViewById(R.id.etPassword);
-        mViewHolder.btRegister = (Button) findViewById(R.id.btRegister);
+        this.mViewHolder.tvRegisterLink = (TextView) findViewById(R.id.tvRegisterLink);
+        this.mViewHolder.etUsername = (EditText) findViewById(R.id.etUsermane);
+        this.mViewHolder.etPassword = (EditText) findViewById(R.id.etPassword);
+        this.mViewHolder.btLogin = (Button) findViewById(R.id.btLogin);
 
-        this.mViewHolder.btRegister.setOnClickListener(this);
+        this.mViewHolder.btLogin.setOnClickListener(this);
+        this.mViewHolder.tvRegisterLink.setOnClickListener(this);
+
     }
 
     @Override
@@ -45,20 +48,24 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         super.onDestroy();
     }
 
+
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
-            case R.id.btRegister:
+            case R.id.btLogin:
                 //All button logic
                 break;
+            case R.id.tvRegisterLink:
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                break;
         }
+
     }
 
     private static class ViewHolder {
-        EditText etName;
-        EditText etAge;
+        TextView tvRegisterLink;
         EditText etUsername;
         EditText etPassword;
-        Button btRegister;
+        Button btLogin;
     }
 }
