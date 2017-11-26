@@ -1,7 +1,6 @@
 package projects.dellectus.myappartment;
 
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -69,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
+                            boolean success = (Boolean) jsonResponse.getBoolean("success");
 
                             if(success) {
                                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
