@@ -3,9 +3,14 @@ package projects.dellectus.myappartment;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class UserAreaActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -16,12 +21,23 @@ public class UserAreaActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_area);
 
-        mViewHolder.etName = (EditText) findViewById(R.id.etName);
-        mViewHolder.etAge= (EditText) findViewById(R.id.etAge);
-        mViewHolder.etUsername = (EditText) findViewById(R.id.etUsername);
+        this.mViewHolder.tvName = (TextView) findViewById(R.id.tvName);
+        this.mViewHolder.tvUsername = (TextView) findViewById(R.id.tvUsername);
+        this.mViewHolder.tvAge = (TextView) findViewById(R.id.tvAge);
         mViewHolder.btLogout = (Button) findViewById(R.id.btLogout);
 
         this.mViewHolder.btLogout.setOnClickListener(this);
+
+        Bundle extras = getIntent().getExtras();
+
+        String name = extras.getString("name");
+        String username = extras.getString("username");
+        int age = extras.getInt("age", -1);
+
+        this.mViewHolder.tvName.setText(name);
+        this.mViewHolder.tvUsername.setText(username);
+        this.mViewHolder.tvAge.setText(Integer.toString(age));
+
     }
 
     @Override
@@ -55,9 +71,9 @@ public class UserAreaActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private static class ViewHolder {
-        EditText etName;
-        EditText etAge;
-        EditText etUsername;
+        TextView tvName;
+        TextView tvAge;
+        TextView tvUsername;
         Button btLogout;
     }
 }
