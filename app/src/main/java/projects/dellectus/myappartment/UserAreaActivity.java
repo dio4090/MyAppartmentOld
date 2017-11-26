@@ -25,8 +25,11 @@ public class UserAreaActivity extends AppCompatActivity implements View.OnClickL
         this.mViewHolder.tvUsername = (TextView) findViewById(R.id.tvUsername);
         this.mViewHolder.tvAge = (TextView) findViewById(R.id.tvAge);
         mViewHolder.btLogout = (Button) findViewById(R.id.btLogout);
+        mViewHolder.btMaps = (Button) findViewById(R.id.btMaps);
+
 
         this.mViewHolder.btLogout.setOnClickListener(this);
+        this.mViewHolder.btMaps.setOnClickListener(this);
 
         Bundle extras = getIntent().getExtras();
 
@@ -67,6 +70,10 @@ public class UserAreaActivity extends AppCompatActivity implements View.OnClickL
             case R.id.btLogout:
                 startActivity(new Intent(UserAreaActivity.this, LoginActivity.class));
                 break;
+
+            case R.id.btMaps:
+                startActivity(new Intent(UserAreaActivity.this, MapsActivity.class));
+                break;
         }
     }
 
@@ -75,5 +82,6 @@ public class UserAreaActivity extends AppCompatActivity implements View.OnClickL
         TextView tvAge;
         TextView tvUsername;
         Button btLogout;
+        Button btMaps;
     }
 }

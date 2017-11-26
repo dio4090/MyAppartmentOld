@@ -55,12 +55,18 @@
         android:textStyle="bold"
         android:textSize="20sp"/>
 
+    <Button
+        android:id="@+id/btMaps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Meu Apartamento"
+        android:layout_marginTop="100dp" />
 
     <Button
         android:id="@+id/btLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Logout"
-        android:layout_marginTop="180dp"/>
+        android:layout_marginTop="10dp" />
 
 </LinearLayout>
